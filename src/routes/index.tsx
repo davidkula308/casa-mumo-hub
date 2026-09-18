@@ -30,7 +30,7 @@ function Index() {
   const { data: cms } = useQuery(cmsQuery);
   const { data: myBookings = [] } = useQuery(myBookingsQuery(user?.id));
   const { data: notes = [] } = useQuery(notificationsQuery(user?.id));
-  const home = (cms?.home ?? {}) as { eyebrow?: string; headline?: string; intro?: string };
+  const home = (cms?.['home'] ?? {}) as { eyebrow?: string; headline?: string; intro?: string };
   const promo = promos.find((p) => p.active);
 
   const [checkIn, setCheckIn] = useState(isoDate(addDays(new Date(), 7)));
@@ -98,9 +98,9 @@ function Index() {
 
         <div className="rise-1 lg:col-span-6">
           <div className="grid grid-cols-2 gap-4">
-            <img src={roomImages.hero} alt="Sunlit terracotta bedroom at Casa Mumo" width={1280} height={800} className="col-span-2 aspect-[16/10] rounded-[28px] object-cover ring-1 ring-border" />
-            <img src={roomImages.ceramics} alt="Hand-thrown ceramics on an oak table" width={768} height={768} loading="lazy" className="aspect-square rounded-[24px] object-cover ring-1 ring-border" />
-            <img src={roomImages.eucalyptus} alt="Eucalyptus and olive branches in a vase" width={768} height={768} loading="lazy" className="aspect-square rounded-[24px] object-cover ring-1 ring-border" />
+            <img src={roomImages['hero']} alt="Sunlit terracotta bedroom at Casa Mumo" width={1280} height={800} className="col-span-2 aspect-[16/10] rounded-[28px] object-cover ring-1 ring-border" />
+            <img src={roomImages['ceramics']} alt="Hand-thrown ceramics on an oak table" width={768} height={768} loading="lazy" className="aspect-square rounded-[24px] object-cover ring-1 ring-border" />
+            <img src={roomImages['eucalyptus']} alt="Eucalyptus and olive branches in a vase" width={768} height={768} loading="lazy" className="aspect-square rounded-[24px] object-cover ring-1 ring-border" />
           </div>
         </div>
       </section>
