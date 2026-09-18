@@ -16,6 +16,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as OffersRouteImport } from './routes/offers'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedManageRouteImport } from './routes/_authenticated/manage'
@@ -57,6 +58,11 @@ const FaqsRoute = FaqsRouteImport.update({
   path: '/faqs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
+  '/offers': typeof OffersRoute
   '/reset-password': typeof ResetPasswordRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/manage': typeof AuthenticatedManageRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
+  '/offers': typeof OffersRoute
   '/reset-password': typeof ResetPasswordRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/manage': typeof AuthenticatedManageRoute
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
+  '/offers': typeof OffersRoute
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/manage': typeof AuthenticatedManageRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/faqs'
+    | '/offers'
     | '/reset-password'
     | '/dashboard'
     | '/manage'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/faqs'
+    | '/offers'
     | '/reset-password'
     | '/dashboard'
     | '/manage'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/faqs'
+    | '/offers'
     | '/reset-password'
     | '/_authenticated/dashboard'
     | '/_authenticated/manage'
@@ -186,6 +198,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
+  OffersRoute: typeof OffersRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   RoomsSlugRoute: typeof RoomsSlugRoute
   RoomsIndexRoute: typeof RoomsIndexRoute
@@ -240,6 +253,13 @@ declare module '@tanstack/react-router' {
       path: '/faqs'
       fullPath: '/faqs'
       preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reset-password': {
@@ -310,6 +330,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
+  OffersRoute: OffersRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   RoomsSlugRoute: RoomsSlugRoute,
   RoomsIndexRoute: RoomsIndexRoute,
