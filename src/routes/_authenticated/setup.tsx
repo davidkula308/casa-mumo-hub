@@ -26,8 +26,8 @@ function Setup() {
     setBusy(true);
     const { data, error } = await supabase.rpc("claim_owner");
     setBusy(false);
-    if (error) return toast.error(error.message);
-    if (!data) return toast.error("An owner already exists. Ask them to assign you a role.");
+    if (error) { toast.error(error.message); return; }
+    if (!data) { toast.error("An owner already exists. Ask them to assign you a role."); return; }
     await refresh();
     toast.success("You are now the owner of Casa Mumo Airbnbs.");
     navigate({ to: "/manage" });
